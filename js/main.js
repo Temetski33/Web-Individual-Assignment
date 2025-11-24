@@ -18,4 +18,15 @@ restaurants.forEach((r) => {
   listEl.appendChild(item);
 });
 
+// Initialize map
+const map = L.map("map").setView([60.1699, 24.9384], 14);
 
+// Add OpenStreetMap tiles
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "&copy; OpenStreetMap contributors",
+}).addTo(map);
+
+// Add markers
+restaurants.forEach((r) => {
+  L.marker([r.lat, r.lng]).addTo(map).bindPopup(r.name);
+});

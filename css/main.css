@@ -24,8 +24,16 @@ footer {
 
 .container {
   display: flex;
+  align-items: center; /* vertical centering */
   justify-content: space-between;
-  align-items: center;
+  gap: 1rem;
+}
+
+.container > .list {
+  flex: 1 1 60%;
+}
+.container > .map {
+  flex: 1 1 40%;
 }
 
 .item {
@@ -52,4 +60,10 @@ footer {
   width: 40px;
   height: 40px;
   object-fit: cover;
+}
+
+.map,
+#map {
+  height: 480px; /* choose appropriate height */
+  min-height: 300px;
 }
