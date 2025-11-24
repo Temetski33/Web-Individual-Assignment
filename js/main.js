@@ -13,7 +13,7 @@ restaurants.forEach((r) => {
   item.textContent = r.name;
   item.onclick = () => {
     // Center map on restaurant
-    map.setCenter({ lat: r.lat, lng: r.lng });
+    map.setView([r.lat, r.lng], 15);
   };
   listEl.appendChild(item);
 });
