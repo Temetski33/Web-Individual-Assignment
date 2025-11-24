@@ -36,6 +36,12 @@ footer {
   justify-content: center;
 }
 
+.restaurant {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
 #kuva {
   width: 100%;
   height: 100%;
