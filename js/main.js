@@ -1,3 +1,13 @@
+// Create login button
+const headerContainer = document.querySelector(".container--header");
+if (headerContainer) {
+  const loginButton = document.createElement("div");
+  loginButton.id = "loginButton";
+  loginButton.className = "item";
+  loginButton.textContent = "Login/Register";
+  headerContainer.appendChild(loginButton);
+}
+
 // Example restaurants
 const restaurants = [
   { name: "SODEXO Turbogood", lat: 60.1699, lng: 24.9384 },
