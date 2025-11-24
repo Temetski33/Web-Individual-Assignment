@@ -14,6 +14,7 @@ restaurants.forEach((r) => {
   item.onclick = () => {
     // Center map on restaurant
     map.setView([r.lat, r.lng], 15);
+    if (r._marker) r._marker.openPopup();
   };
   listEl.appendChild(item);
 });
@@ -28,5 +29,5 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 // Add markers
 restaurants.forEach((r) => {
-  L.marker([r.lat, r.lng]).addTo(map).bindPopup(r.name);
+  r._marker = L.marker([r.lat, r.lng]).addTo(map).bindPopup(r.name);
 });
