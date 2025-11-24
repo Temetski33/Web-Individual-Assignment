@@ -38,7 +38,7 @@ footer {
 
 .item {
   /* Remove later, color just an indicator*/
-  background-color: rgb(220, 210, 210);
+  /* background-color: rgb(220, 210, 210); */
   height: 100%;
   display: flex;
   align-items: center;
