@@ -9,7 +9,7 @@ body {
 }
 
 header {
-  position: sticky;
+  /* position: sticky; */
   background-color: rgb(194, 231, 243);
   height: 40px;
   top: 0;
@@ -22,11 +22,25 @@ footer {
   height: 40px;
 }
 
+.wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
 .container {
   display: flex;
-  align-items: center; /* vertical centering */
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  margin: 0 auto;
+}
+
+.container--header {
+  width: 80%;
+}
+
+.container--footer {
+  width: 90%;
 }
 
 .container > .list {
@@ -58,7 +72,7 @@ footer {
 }
 
 #logo {
-  width: 40px;
+  max-width: 40px;
   margin-right: 10px;
   max-height: 40px;
   object-fit: cover;
