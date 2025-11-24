@@ -43,6 +43,11 @@ const restaurants = [
   { name: "Sodexo Jyväskylä 5", lat: 62.25, lng: 25.76 },
   { name: "Unicafe Rovaniemi", lat: 66.5, lng: 25.7 },
   { name: "Unicafe Rollo El Pollo", lat: 66.52, lng: 25.7 },
+  { name: "Studencafe Jyväskylä 1", lat: 62.245, lng: 25.74 },
+  { name: "Studencafe Jyväskylä 2", lat: 62.245, lng: 25.745 },
+  { name: "Studencafe Jyväskylä 3", lat: 62.245, lng: 25.75 },
+  { name: "Studencafe Jyväskylä 4", lat: 62.245, lng: 25.755 },
+  { name: "Studencafe Jyväskylä 5", lat: 62.245, lng: 25.76 },
 ];
 
 // Render restaurants
@@ -53,7 +58,7 @@ restaurants.forEach((r) => {
   item.textContent = r.name;
   item.onclick = () => {
     // Center map on restaurant
-    map.setView([r.lat, r.lng], 15);
+    map.setView([r.lat, r.lng], 14);
     if (r._marker) r._marker.openPopup();
   };
   listEl.appendChild(item);

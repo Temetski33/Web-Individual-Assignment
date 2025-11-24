@@ -78,6 +78,11 @@ footer {
   object-fit: cover;
 }
 
+.list {
+  overflow-y: scroll;
+  height: 350px;
+}
+
 .map,
 #map {
   height: 350px;
