@@ -14,7 +14,7 @@ loginDialog.innerHTML = `
   `;
 document.body.appendChild(loginDialog);
 
-// open dialog on button click
+// Open dialog on button click
 loginButton.addEventListener("click", () => {
   loginDialog.showModal();
 });
@@ -46,6 +46,7 @@ restaurants.forEach((r) => {
   const item = document.createElement("div");
   item.className = "restaurant";
   item.textContent = r.name;
+  // Show restaurant on map
   item.addEventListener("click", () => {
     map.setView([r.lat, r.lng], 14);
     if (r._marker) r._marker.openPopup();
