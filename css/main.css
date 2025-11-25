@@ -88,3 +88,17 @@ footer {
   height: 350px;
   min-height: 250px;
 }
+
+/* unvisited link */
+a:link,
+a:visited {
+  color: blue;
+  padding: 10px;
+  /* text-decoration: none; */
+}
+
+/* mouse over link */
+a:hover,
+a:active {
+  color: rgb(190, 44, 190);
+}
