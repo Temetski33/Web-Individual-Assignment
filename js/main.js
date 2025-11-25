@@ -46,11 +46,10 @@ restaurants.forEach((r) => {
   const item = document.createElement("div");
   item.className = "restaurant";
   item.textContent = r.name;
-  item.onclick = () => {
-    // Center map on restaurant
+  item.addEventListener("click", () => {
     map.setView([r.lat, r.lng], 14);
     if (r._marker) r._marker.openPopup();
-  };
+  });
   listEl.appendChild(item);
 });
 
