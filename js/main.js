@@ -1,13 +1,3 @@
-// Create login button
-const headerContainer = document.querySelector(".container--header");
-if (headerContainer) {
-  const loginButton = document.createElement("div");
-  loginButton.id = "loginButton";
-  loginButton.className = "item";
-  loginButton.textContent = "Login/Register";
-  headerContainer.appendChild(loginButton);
-}
-
 // create dialog element
 const loginDialog = document.createElement("dialog");
 loginDialog.id = "loginDialog";
