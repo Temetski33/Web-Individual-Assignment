@@ -1,21 +1,5 @@
 import getRestaurants from "./restaurants.js";
 
-// create dialog element
-const loginDialog = document.createElement("dialog");
-loginDialog.id = "loginDialog";
-loginDialog.innerHTML = `
-    <form method="dialog" class="dialog-form" style="display:flex;flex-direction:column;gap:.5rem;">
-      <h2>Login</h2>
-      <label>Username<br><input name="username" /></label>
-      <label>Password<br><input name="password" type="password" /></label>
-      <div style="display:flex;gap:.5rem;justify-content:flex-end;">
-        <button value="cancel">Cancel</button>
-        <button id="submitLogin" value="default">Login</button>
-      </div>
-    </form>
-  `;
-document.body.appendChild(loginDialog);
-
 // Open dialog on button click
 loginButton.addEventListener("click", () => {
   loginDialog.showModal();

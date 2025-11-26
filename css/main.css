@@ -141,3 +141,15 @@ a:hover,
 a:active {
   color: rgb(103, 99, 103);
 }
+
+.dialogForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#registerButton {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
