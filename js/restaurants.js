@@ -24,7 +24,7 @@ const getRestaurants = () => {
   return restaurants;
 };
 
-const renderRestaurants = () => {
+const renderRestaurants = (map) => {
   const listEl = document.getElementById("restaurantList");
   restaurants.forEach((r) => {
     const item = document.createElement("div");
