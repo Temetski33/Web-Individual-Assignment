@@ -18,6 +18,7 @@ const restaurants = [
   { name: "Studencafe Jyväskylä 3", lat: 62.245, lng: 25.75 },
   { name: "Studencafe Jyväskylä 4", lat: 62.245, lng: 25.755 },
   { name: "Studencafe Jyväskylä 5", lat: 62.245, lng: 25.76 },
+  { name: "Joensuu DeLuxe", lat: 62.6, lng: 29.76 },
 ];
 
 const getRestaurants = () => {
