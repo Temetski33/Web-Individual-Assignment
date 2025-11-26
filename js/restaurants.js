@@ -46,9 +46,16 @@ const renderRestaurants = (map) => {
     });
     menu.appendChild(ul);
 
-    // Center map and open collapsible on click
-    summary.addEventListener("click", (e) => {
-      // Set map view
+    // Center map and open menu
+    details.addEventListener("toggle", () => {
+      if (!details.open) return; // only act when this one opened
+
+      // Close other open menus
+      document.querySelectorAll(".restaurant").forEach((d) => {
+        if (d !== details && d.open) d.open = false;
+      });
+
+      // Center map on this restaurant
       if (map && typeof map.setView === "function") {
         map.setView([r.lat, r.lng], 14);
       }
