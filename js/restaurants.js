@@ -38,14 +38,14 @@ const renderRestaurants = (map) => {
     const menu = document.createElement("div");
     menu.className = "menu";
 
-    // button group to switch menus
+    // Button to switch menus
     const switcher = document.createElement("div");
     switcher.className = "menu-switch";
 
     const dailyBtn = document.createElement("button");
     dailyBtn.type = "button";
     dailyBtn.textContent = "Daily";
-    dailyBtn.className = "active"; // default
+    dailyBtn.className = "active";
 
     const weeklyBtn = document.createElement("button");
     weeklyBtn.type = "button";
@@ -54,7 +54,7 @@ const renderRestaurants = (map) => {
     switcher.appendChild(dailyBtn);
     switcher.appendChild(weeklyBtn);
 
-    // two separate lists
+    // Create two placeholder menu lists
     const dailyList = document.createElement("ul");
     dailyList.className = "menu-list menu-list--daily active";
     ["Food 1", "Food 2", "Food 3", "Food 4"].forEach((food) => {
@@ -71,7 +71,7 @@ const renderRestaurants = (map) => {
       weeklyList.appendChild(li);
     });
 
-    // helper to switch visible menu
+    // Helper to switch visible menu
     const showMenu = (which) => {
       if (which === "daily") {
         dailyList.classList.add("active");
@@ -91,7 +91,7 @@ const renderRestaurants = (map) => {
 
     // Center map and open menu
     details.addEventListener("toggle", () => {
-      if (!details.open) return; // only act when this one opened
+      if (!details.open) return;
 
       // Close other open menus
       document.querySelectorAll(".restaurant").forEach((d) => {
