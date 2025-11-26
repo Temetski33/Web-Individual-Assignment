@@ -26,16 +26,41 @@ const getRestaurants = () => {
 
 const renderRestaurants = (map) => {
   const listEl = document.getElementById("restaurantList");
+  listEl.innerHTML = "";
+
   restaurants.forEach((r) => {
-    const item = document.createElement("div");
-    item.className = "restaurant";
-    item.textContent = r.name;
-    // Show restaurant on map
-    item.addEventListener("click", () => {
-      map.setView([r.lat, r.lng], 14);
-      if (r._marker) r._marker.openPopup();
+    const details = document.createElement("details");
+    details.className = "restaurant";
+
+    const summary = document.createElement("summary");
+    summary.textContent = r.name;
+
+    const menu = document.createElement("div");
+    menu.className = "menu";
+
+    const ul = document.createElement("ul");
+    ["Food 1", "Food 2", "Food 3", "Food 4"].forEach((food) => {
+      const li = document.createElement("li");
+      li.textContent = food;
+      ul.appendChild(li);
     });
-    listEl.appendChild(item);
+    menu.appendChild(ul);
+
+    // Center map and open collapsible on click
+    summary.addEventListener("click", (e) => {
+      // Set map view
+      if (map && typeof map.setView === "function") {
+        map.setView([r.lat, r.lng], 14);
+      }
+      // Open popup
+      if (r._marker && typeof r._marker.openPopup === "function") {
+        r._marker.openPopup();
+      }
+    });
+
+    details.appendChild(summary);
+    details.appendChild(menu);
+    listEl.appendChild(details);
   });
 };
 
