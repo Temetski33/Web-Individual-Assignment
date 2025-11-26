@@ -3,21 +3,9 @@ import { renderRestaurants } from "./restaurants.js";
 import { getMap } from "./map.js";
 import { addTiles } from "./map.js";
 import { addMarkers } from "./map.js";
+import { setupDialogEvents } from "./dialogEvents.js";
 
-// Open dialog on button click
-loginRegisterButton.addEventListener("click", () => {
-  loginDialog.showModal();
-});
-
-registerButton.addEventListener("click", () => {
-  loginDialog.close();
-  registerDialog.showModal();
-});
-
-loginButton.addEventListener("click", () => {
-  registerDialog.close();
-  loginDialog.showModal();
-});
+setupDialogEvents();
 
 const restaurants = getRestaurants();
 const map = getMap();
