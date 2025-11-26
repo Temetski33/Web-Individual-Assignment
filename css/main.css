@@ -148,7 +148,13 @@ a:active {
   gap: 0.5rem;
 }
 
-#registerButton {
+.dialogButton {
+  display: flex;
+  justify-content: space-between;
+}
+
+#registerButton,
+#loginButton {
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;

@@ -60,7 +60,7 @@
           Password<br />
           <input name="password" type="password" />
         </label>
-        <div style="display: flex; gap: 0.5rem; justify-content: flex-end">
+        <div class="dialogButton">
           <button value="cancel">Cancel</button>
           <button id="submitLogin" value="default">Login</button>
         </div>
@@ -70,6 +70,27 @@
 
     <!-- Register dialog -->
 
-
+    <dialog id="registerDialog">
+      <form method="dialog" class="dialogForm">
+        <h2>Register account</h2>
+        <label>
+          Username<br />
+          <input name="username" />
+        </label>
+        <label>
+          Email address<br />
+          <input name="email" />
+        </label>
+        <label>
+          Password<br />
+          <input name="password" type="password" />
+        </label>
+        <div class="dialogButton">
+          <button value="cancel">Cancel</button>
+          <button id="submitRegister" value="default">Register</button>
+        </div>
+        <div id="loginButton">Already have an account? Login.</div>
+      </form>
+    </dialog>
   </body>
 </html>
