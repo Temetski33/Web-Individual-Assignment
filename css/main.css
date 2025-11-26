@@ -90,12 +90,12 @@ footer {
 
 .list {
   overflow-y: scroll;
-  height: 350px;
+  height: 320px;
 }
 
 .map,
 #map {
-  height: 350px;
+  height: 320px;
   min-height: 250px;
 }
 
