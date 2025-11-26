@@ -57,12 +57,12 @@ footer {
 }
 
 .container--main > .list {
-  flex: 1 1 55%;
-  width: 55%;
+  flex: 1 1 60%;
+  width: 60%;
 }
 .container--main > .map {
-  flex: 1 1 45%;
-  width: 45%;
+  flex: 1 1 40%;
+  width: 40%;
 }
 
 .item {
