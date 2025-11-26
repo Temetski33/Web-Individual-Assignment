@@ -1,4 +1,5 @@
-import getRestaurants from "./restaurants.js";
+import {getRestaurants} from "./restaurants.js";
+import {renderRestaurants} from "./restaurants.js";
 
 // Open dialog on button click
 loginRegisterButton.addEventListener("click", () => {
@@ -15,8 +16,12 @@ loginButton.addEventListener("click", () => {
   loginDialog.showModal();
 });
 
+// This can be removed later when not needed
 const restaurants = getRestaurants();
 
+renderRestaurants();
+
+/*
 // Render restaurants
 const listEl = document.getElementById("restaurantList");
 restaurants.forEach((r) => {
@@ -30,6 +35,7 @@ restaurants.forEach((r) => {
   });
   listEl.appendChild(item);
 });
+*/
 
 // Initialize map
 const map = L.map("map").setView([60.1699, 24.9384], 14);
