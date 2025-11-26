@@ -1,7 +1,7 @@
 import getRestaurants from "./restaurants.js";
 
 // Open dialog on button click
-loginButton.addEventListener("click", () => {
+loginRegisterButton.addEventListener("click", () => {
   loginDialog.showModal();
 });
 

@@ -94,11 +94,11 @@ footer {
   object-fit: cover;
 }
 
-#loginButton {
+#loginRegisterButton {
   cursor: pointer;
 }
 
-#loginButton:hover {
+#loginRegisterButton:hover {
   background-color: rgb(201, 234, 245);
 }
 
