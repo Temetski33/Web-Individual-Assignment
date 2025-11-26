@@ -46,15 +46,23 @@ footer {
   height: 100%;
 }
 
+.container--main {
+  align-items: flex-start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 .container--footer {
   width: 95%;
 }
 
-.container > .list {
-  flex: 1 1 60%;
+.container--main > .list {
+  flex: 1 1 55%;
+  width: 55%;
 }
-.container > .map {
-  flex: 1 1 40%;
+.container--main > .map {
+  flex: 1 1 45%;
+  width: 45%;
 }
 
 .item {
@@ -101,8 +109,23 @@ footer {
 
 .map,
 #map {
+  width: 100%;
   height: 320px;
   min-height: 250px;
+}
+
+@media (max-width: 700px) {
+  .container--main {
+    flex-direction: column;
+  }
+  .container--main > .list,
+  .container--main > .map {
+    flex: none;
+    width: 100%;
+  }
+  .list {
+    height: 200px;
+  }
 }
 
 /* unvisited link */
