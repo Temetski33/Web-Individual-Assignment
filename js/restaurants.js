@@ -38,13 +38,56 @@ const renderRestaurants = (map) => {
     const menu = document.createElement("div");
     menu.className = "menu";
 
-    const ul = document.createElement("ul");
+    // button group to switch menus
+    const switcher = document.createElement("div");
+    switcher.className = "menu-switch";
+
+    const dailyBtn = document.createElement("button");
+    dailyBtn.type = "button";
+    dailyBtn.textContent = "Daily";
+    dailyBtn.className = "active"; // default
+
+    const weeklyBtn = document.createElement("button");
+    weeklyBtn.type = "button";
+    weeklyBtn.textContent = "Weekly";
+
+    switcher.appendChild(dailyBtn);
+    switcher.appendChild(weeklyBtn);
+
+    // two separate lists
+    const dailyList = document.createElement("ul");
+    dailyList.className = "menu-list menu-list--daily active";
     ["Food 1", "Food 2", "Food 3", "Food 4"].forEach((food) => {
       const li = document.createElement("li");
       li.textContent = food;
-      ul.appendChild(li);
+      dailyList.appendChild(li);
     });
-    menu.appendChild(ul);
+
+    const weeklyList = document.createElement("ul");
+    weeklyList.className = "menu-list menu-list--weekly";
+    ["Meal 1", "Meal 2", "Meal 3", "Meal 4"].forEach((food) => {
+      const li = document.createElement("li");
+      li.textContent = food;
+      weeklyList.appendChild(li);
+    });
+
+    // helper to switch visible menu
+    const showMenu = (which) => {
+      if (which === "daily") {
+        dailyList.classList.add("active");
+        weeklyList.classList.remove("active");
+        dailyBtn.classList.add("active");
+        weeklyBtn.classList.remove("active");
+      } else {
+        dailyList.classList.remove("active");
+        weeklyList.classList.add("active");
+        dailyBtn.classList.remove("active");
+        weeklyBtn.classList.add("active");
+      }
+    };
+
+    dailyBtn.addEventListener("click", () => showMenu("daily"));
+    weeklyBtn.addEventListener("click", () => showMenu("weekly"));
 
     // Center map and open menu
     details.addEventListener("toggle", () => {
@@ -55,6 +98,8 @@ const renderRestaurants = (map) => {
         if (d !== details && d.open) d.open = false;
       });
 
+      showMenu("daily");
+
       // Center map on this restaurant
       if (map && typeof map.setView === "function") {
         map.setView([r.lat, r.lng], 14);
@@ -64,6 +109,10 @@ const renderRestaurants = (map) => {
         r._marker.openPopup();
       }
     });
+
+    menu.appendChild(switcher);
+    menu.appendChild(dailyList);
+    menu.appendChild(weeklyList);
 
     details.appendChild(summary);
     details.appendChild(menu);
