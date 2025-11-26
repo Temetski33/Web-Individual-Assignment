@@ -19,7 +19,6 @@ loginButton.addEventListener("click", () => {
   loginDialog.showModal();
 });
 
-// This can be removed later when not needed
 const restaurants = getRestaurants();
 const map = getMap();
 
