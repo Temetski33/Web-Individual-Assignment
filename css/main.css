@@ -52,8 +52,6 @@ footer {
 }
 
 .item {
-  /* Remove later, color just an indicator*/
-  /* background-color: rgb(220, 210, 210); */
   height: 100%;
   display: flex;
   align-items: center;
@@ -78,6 +76,10 @@ footer {
   object-fit: cover;
 }
 
+#loginButton {
+  cursor: pointer;
+}
+
 .list {
   overflow-y: scroll;
   height: 350px;
@@ -92,7 +94,7 @@ footer {
 /* unvisited link */
 a:link,
 a:visited {
-  color: blue;
+  color: black;
   padding: 10px;
   /* text-decoration: none; */
 }
@@ -100,5 +102,5 @@ a:visited {
 /* mouse over link */
 a:hover,
 a:active {
-  color: rgb(190, 44, 190);
+  color: rgb(103, 99, 103);
 }
