@@ -2,10 +2,6 @@ html {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-:root {
-  --primary-bg-color: rgb(242, 252, 255);
-}
-
 body {
   height: 100%;
   min-height: 100vh;
@@ -137,8 +133,7 @@ footer {
 
 #loginRegisterButton {
   cursor: pointer;
-    padding: 0rem 0.5rem 0rem 0.5rem;
-
+  padding: 0rem 0.5rem 0rem 0.5rem;
 }
 
 #loginRegisterButton:hover {
