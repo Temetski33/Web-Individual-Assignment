@@ -4,7 +4,6 @@ import {getMap} from './map.js';
 import {addTiles} from './map.js';
 import {addMarkers} from './map.js';
 import {setupDialogEvents} from './dialogEvents.js';
-import {fetchRestaurants} from './api/fetchRestaurants.js';
 
 setupDialogEvents();
 
