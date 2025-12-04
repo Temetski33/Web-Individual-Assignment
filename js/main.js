@@ -11,8 +11,8 @@ setupDialogEvents();
 const restaurants = getRestaurants();
 const map = getMap();
 
-renderRestaurants(map);
 addTiles();
+renderRestaurants(map);
 addMarkers(restaurants);
 
 // quick api test
