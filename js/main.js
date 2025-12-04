@@ -1,9 +1,10 @@
-import { getRestaurants } from "./restaurants.js";
-import { renderRestaurants } from "./restaurants.js";
-import { getMap } from "./map.js";
-import { addTiles } from "./map.js";
-import { addMarkers } from "./map.js";
-import { setupDialogEvents } from "./dialogEvents.js";
+import {getRestaurants} from './restaurants.js';
+import {renderRestaurants} from './restaurants.js';
+import {getMap} from './map.js';
+import {addTiles} from './map.js';
+import {addMarkers} from './map.js';
+import {setupDialogEvents} from './dialogEvents.js';
+import {fetchRestaurants} from './api/fetchRestaurants.js';
 
 setupDialogEvents();
 
@@ -13,3 +14,7 @@ const map = getMap();
 renderRestaurants(map);
 addTiles();
 addMarkers(restaurants);
+
+// quick api test
+
+fetchRestaurants();
