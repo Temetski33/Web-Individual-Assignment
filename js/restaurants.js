@@ -1,5 +1,3 @@
-// Example restaurants
-
 import {fetchRestaurants} from './api/fetchRestaurants.js';
 
 const restaurants = await fetchRestaurants();
