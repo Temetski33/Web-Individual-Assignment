@@ -14,7 +14,3 @@ const map = getMap();
 addTiles();
 renderRestaurants(map);
 addMarkers(restaurants);
-
-// quick api test
-
-fetchRestaurants();
