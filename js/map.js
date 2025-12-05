@@ -15,9 +15,10 @@ const addTiles = () => {
 // Add restaurant markers
 const addMarkers = (restaurants) => {
   restaurants.forEach((r) => {
+    const popupText = r.name + ' (' + r.company + ')';
     r._marker = L.marker([r.location.coordinates[1], r.location.coordinates[0]])
       .addTo(map)
-      .bindPopup(r.name);
+      .bindPopup(popupText);
   });
 };
 

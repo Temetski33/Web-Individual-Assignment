@@ -15,7 +15,7 @@ const renderRestaurants = (map) => {
     details.className = 'restaurant';
 
     const summary = document.createElement('summary');
-    summary.textContent = r.name;
+    summary.textContent = r.name + ' (' + r.company + ')';
 
     const menu = document.createElement('div');
     menu.className = 'menu';
