@@ -1,3 +1,5 @@
+import {getDailyMenu} from './api/dailyMenu.js';
+
 const renderRestaurants = (map, restaurants) => {
   const listEl = document.getElementById('restaurantList');
   listEl.innerHTML = '';
@@ -8,6 +10,8 @@ const renderRestaurants = (map, restaurants) => {
 
     const summary = document.createElement('summary');
     summary.textContent = r.name + ' (' + r.company + ')';
+
+    const restaurantId = r._id;
 
     const menu = document.createElement('div');
     menu.className = 'menu';
@@ -31,11 +35,6 @@ const renderRestaurants = (map, restaurants) => {
     // Create two placeholder menu lists
     const dailyList = document.createElement('ul');
     dailyList.className = 'menu-list menu-list--daily active';
-    ['Food 1', 'Food 2', 'Food 3', 'Food 4'].forEach((food) => {
-      const li = document.createElement('li');
-      li.textContent = food;
-      dailyList.appendChild(li);
-    });
 
     const weeklyList = document.createElement('ul');
     weeklyList.className = 'menu-list menu-list--weekly';
@@ -63,8 +62,8 @@ const renderRestaurants = (map, restaurants) => {
     dailyBtn.addEventListener('click', () => showMenu('daily'));
     weeklyBtn.addEventListener('click', () => showMenu('weekly'));
 
-    // Center map and open menu
-    details.addEventListener('toggle', () => {
+    // Center map on restaurant and load daily menu
+    details.addEventListener('toggle', async () => {
       if (!details.open) return;
 
       // Close other open menus
@@ -81,6 +80,30 @@ const renderRestaurants = (map, restaurants) => {
       // Open popup
       if (r._marker && typeof r._marker.openPopup === 'function') {
         r._marker.openPopup();
+      }
+
+      try {
+        const dailyMenuData = await getDailyMenu(restaurantId);
+        // Clear old items and add fetched menu items
+        dailyList.innerHTML = '';
+
+        // Access list item from menu data
+        const courses = dailyMenuData?.courses || [];
+        // Add menu
+        if (courses.length > 0) {
+          courses.forEach((item) => {
+            const li = document.createElement('li');
+            li.textContent = item.name;
+            dailyList.appendChild(li);
+          });
+        } else {
+          const li = document.createElement('li');
+          li.textContent = 'No menu available';
+          dailyList.appendChild(li);
+        }
+      } catch (err) {
+        console.error('Failed to load daily menu:', err);
+        dailyList.innerHTML = '<li>Error loading menu</li>';
       }
     });
 
