@@ -96,7 +96,7 @@ footer {
 }
 
 .restaurant:hover {
-  background: #e3e3e3;
+  background: #f5f5f5;
 }
 
 .menu-switch {
@@ -137,7 +137,7 @@ footer {
 }
 
 #loginRegisterButton:hover {
-  background-color: #ccc;
+  background-color: #f1f1f1;
 }
 
 #restaurantList {
