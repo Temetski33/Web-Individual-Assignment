@@ -1,4 +1,5 @@
 import {getDailyMenu} from './api/dailyMenu.js';
+import {getWeeklyMenu} from './api/weeklyMenu.js';
 
 const renderRestaurants = (map, restaurants) => {
   const listEl = document.getElementById('restaurantList');
@@ -38,11 +39,6 @@ const renderRestaurants = (map, restaurants) => {
 
     const weeklyList = document.createElement('ul');
     weeklyList.className = 'menu-list menu-list--weekly';
-    ['Meal 1', 'Meal 2', 'Meal 3', 'Meal 4'].forEach((food) => {
-      const li = document.createElement('li');
-      li.textContent = food;
-      weeklyList.appendChild(li);
-    });
 
     // Helper to switch visible menu
     const showMenu = (which) => {
@@ -82,6 +78,7 @@ const renderRestaurants = (map, restaurants) => {
         r._marker.openPopup();
       }
 
+      // Add data to daily menu
       try {
         const dailyMenuData = await getDailyMenu(restaurantId);
         // Clear old items and add fetched menu items
@@ -89,13 +86,13 @@ const renderRestaurants = (map, restaurants) => {
 
         // Access list item from menu data
         const courses = dailyMenuData?.courses || [];
-        // Add menu
+
         if (courses.length > 0) {
           courses.forEach((item) => {
             const li = document.createElement('li');
             let priceText = item.price;
-            if (!item.price){
-              priceText = "";
+            if (!item.price) {
+              priceText = '';
             }
             li.innerHTML = `${item.name}<br><small>(${item.diets}) ${priceText}</small>`;
             dailyList.appendChild(li);
@@ -108,6 +105,36 @@ const renderRestaurants = (map, restaurants) => {
       } catch (err) {
         console.error('Failed to load daily menu:', err);
         dailyList.innerHTML = '<li>Error loading menu</li>';
+      }
+
+      // Add data to weekly menu
+      try {
+        const weeklyMenuData = await getWeeklyMenu(restaurantId);
+        // Clear old items and add fetched menu items
+        weeklyList.innerHTML = '';
+
+        // Access list item from menu data
+        const days = weeklyMenuData?.days || [];
+
+        if (days.length > 0) {
+          days.forEach((item) => {
+            const li = document.createElement('li');
+            const date = item.date;
+            let priceText = item.courses.price;
+            if (!item.courses.price) {
+              priceText = '';
+            }
+            li.innerHTML = `${date}<br>${item.courses.name}<br><small>(${item.courses.diets}) ${priceText}</small>`;
+            weeklyList.appendChild(li);
+          });
+        } else {
+          const li = document.createElement('li');
+          li.textContent = 'No menu available';
+          weeklyList.appendChild(li);
+        }
+      } catch (err) {
+        console.error('Failed to load daily menu:', err);
+        weeklyList.innerHTML = '<li>Error loading menu</li>';
       }
     });
 
