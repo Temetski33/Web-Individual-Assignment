@@ -93,7 +93,11 @@ const renderRestaurants = (map, restaurants) => {
         if (courses.length > 0) {
           courses.forEach((item) => {
             const li = document.createElement('li');
-            li.innerHTML = `${item.name}<br><small>(${item.diets}) ${item.price}</small>`;
+            let priceText = item.price;
+            if (!item.price){
+              priceText = "";
+            }
+            li.innerHTML = `${item.name}<br><small>(${item.diets}) ${priceText}</small>`;
             dailyList.appendChild(li);
           });
         } else {
