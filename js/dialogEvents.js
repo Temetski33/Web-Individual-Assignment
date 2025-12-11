@@ -1,4 +1,5 @@
 import {postLogin} from './api/login.js';
+import {postRegister} from './api/register.js';
 import {showProfileButton, hideProfileButton} from './profile.js';
 
 const setupDialogEvents = () => {
@@ -10,6 +11,7 @@ const setupDialogEvents = () => {
   const loginButton = document.getElementById('loginButton');
   const logoutButton = document.getElementById('logoutButton');
   const submitLogin = document.getElementById('submitLogin');
+  const submitRegister = document.getElementById('submitRegister');
 
   // Open dialog on button click
   loginRegisterButton.addEventListener('click', () => {
@@ -49,6 +51,35 @@ const setupDialogEvents = () => {
         loginDialog.close();
       } else {
         alert('Login failed! Make sure your password is correct.');
+      }
+    } catch (err) {
+      console.error('Login failed:', err);
+      alert('Server error, try again later.');
+    }
+  });
+
+  // Handle register
+  submitRegister.addEventListener('click', async (e) => {
+    e.preventDefault(); // prevent form submission
+
+    // Get input values from the form
+    const username = registerDialog.querySelector(
+      'input[name="username"]'
+    ).value;
+    const password = registerDialog.querySelector(
+      'input[name="password"]'
+    ).value;
+    const email = registerDialog.querySelector('input[name="email"]').value;
+
+    // Call postRegister with username, password, email
+    try {
+      const result = await postRegister(username, password, email);
+      console.log('Register result:', result.message);
+      if (result.message == 'user created') {
+        registerDialog.close();
+        alert('Register succesful! Now log in.');
+      } else {
+        alert('Register failed, try again.');
       }
     } catch (err) {
       console.error('Login failed:', err);
