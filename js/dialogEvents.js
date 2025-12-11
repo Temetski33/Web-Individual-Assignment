@@ -35,13 +35,15 @@ const setupDialogEvents = () => {
     try {
       const result = await postLogin(username, password);
       console.log('Login result:', result.message);
-      if (result.message) {
-        console.log("kakka")
+      if (result.message == 'Login successful') {
+        localStorage.setItem('username', result.data.username);
+        loginDialog.close();
+      } else {
+        alert('Login failed! Make sure your password is correct.');
       }
-      loginDialog.close();
-      // Handle successful login (e.g. store token, redirect, etc)
     } catch (err) {
       console.error('Login failed:', err);
+      alert('Server error, try again later.');
     }
   });
 };
