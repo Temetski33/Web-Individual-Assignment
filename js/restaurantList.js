@@ -117,15 +117,28 @@ const renderRestaurants = (map, restaurants) => {
         const days = weeklyMenuData?.days || [];
 
         if (days.length > 0) {
-          days.forEach((item) => {
-            const li = document.createElement('li');
-            const date = item.date;
-            let priceText = item.courses.price;
-            if (!item.courses.price) {
-              priceText = '';
+          days.forEach((day) => {
+            // Add day heading once
+            const dayHeading = document.createElement('li');
+            dayHeading.innerHTML = `<strong>${day.date}</strong>`;
+            dayHeading.style.listStyle = 'none';
+            dayHeading.style.marginTop = '0.5rem';
+            weeklyList.appendChild(dayHeading);
+
+            const courses = day.courses || [];
+            if (courses.length === 0) {
+              const li = document.createElement('li');
+              li.innerHTML = `<small>No courses available</small>`;
+              weeklyList.appendChild(li);
+              return;
             }
-            li.innerHTML = `${date}<br>${item.courses.name}<br><small>(${item.courses.diets}) ${priceText}</small>`;
-            weeklyList.appendChild(li);
+            // Loop over courses array for each day
+            courses.forEach((course) => {
+              const li = document.createElement('li');
+              let priceText = course.price || '';
+              li.innerHTML = `${course.name}<br><small>(${course.diets}) ${priceText}</small>`;
+              weeklyList.appendChild(li);
+            });
           });
         } else {
           const li = document.createElement('li');
