@@ -1,5 +1,5 @@
 import {postLogin} from './api/login.js';
-import { showProfileButton } from './profile.js';
+import {showProfileButton, hideProfileButton} from './profile.js';
 
 const setupDialogEvents = () => {
   const loginDialog = document.getElementById('loginDialog');
@@ -28,6 +28,7 @@ const setupDialogEvents = () => {
 
   logoutButton.addEventListener('click', () => {
     profileDialog.close();
+    hideProfileButton();
   });
 
   // Handle login submit
