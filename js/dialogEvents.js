@@ -1,11 +1,14 @@
 import {postLogin} from './api/login.js';
+import { showProfileButton } from './profile.js';
 
 const setupDialogEvents = () => {
   const loginDialog = document.getElementById('loginDialog');
   const registerDialog = document.getElementById('registerDialog');
+  const profileDialog = document.getElementById('profileDialog');
   const loginRegisterButton = document.getElementById('loginRegisterButton');
   const registerButton = document.getElementById('registerButton');
   const loginButton = document.getElementById('loginButton');
+  const logoutButton = document.getElementById('logoutButton');
   const submitLogin = document.getElementById('submitLogin');
 
   // Open dialog on button click
@@ -23,6 +26,10 @@ const setupDialogEvents = () => {
     loginDialog.showModal();
   });
 
+  logoutButton.addEventListener('click', () => {
+    profileDialog.close();
+  });
+
   // Handle login submit
   submitLogin.addEventListener('click', async (e) => {
     e.preventDefault(); // prevent form submission
@@ -37,6 +44,7 @@ const setupDialogEvents = () => {
       console.log('Login result:', result.message);
       if (result.message == 'Login successful') {
         localStorage.setItem('username', result.data.username);
+        showProfileButton();
         loginDialog.close();
       } else {
         alert('Login failed! Make sure your password is correct.');
